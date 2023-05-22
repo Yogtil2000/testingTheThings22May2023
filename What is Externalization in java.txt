@@ -1,0 +1,188 @@
+"Externalization" is the process which helps for customizing the serialization mechanism.
+       EXAMPLE:
+     suppose we have the 1000 fields in the particular class/entity and then we just need to serialize the one field and 
+didn't need to serialize the 999 fields then it's not a good practice to write down the "transient" keyword infront 
+of the 999 fields -> No its a bad approach.
+
+
+So basically "Externalizable" implements the "Serializable" so in the case of the serializable all the controll is in the hands of 
+the JVM but as Externalization comes then controll goes to the application itself.
+
+1) In serialization, the Java Virtual Machine is totally responsible for the process of writing and reading objects.
+This is useful as in the most cases programmers do not care about the underlying details of the serialization process....
+    However default serialization does not protect sensitive information during the serialization process..
+
+2) Thus externalization comes to give the programmers full control in reading and writing objects during serialization.
+      JVM has no control over it. The complete serialization control goes to the application.
+
+3)Based on our requirements,we can serialize either the whole data or a piece of data field using the "externalizable" interface 
+  which can helps to improve the performance of the application .
+
+4) "Externalizable" interface extends the "Serializable " interface.
+so basically using the "Externalizable" prvides us the good source for the customization as basically here as well 
+the serialization is done internally using the Serializable interface only but the point here is that extra things like customization 
+and the which data to serialize and which doesn't that basically taken cared by the "externalizable" interface 
+........so here we doesn't need to worry about the "Serializable" you just need to menstion the "Externalizable" instead of the 
+"Serializable" interface.
+
+-------------------------------------------------------------------------------------------------------------------------
+Externalizable interface is not the "MARKER INTERFACE" as like the "Serializable" interface.
+   As it provides the 2 methods:
+1)void readExternal()   ------this method is useful when we want to read the Object's fields from the the "Stream".
+2)void writeExternal()  ------this method is useful when we want to write the object's fields to the "Stream".
+
+readExternal()------> Is the method where we got the IOException and when the object's field class does not found then (POJO) 
+                      then the classNotFoundException occurs as well.
+
+writeExternal()------> Is the method which gives us the IOException if suppose while doing the Serialization we doesn't got the 
+                       .ser file then at that time i.e if we are failed to make the .ser file using the FileOutputStream() 
+
+
+NOTE:
+     When you performing the externalization then at the time when you use the "writeExternal()" method then at that time 
+writeExternal() is overpowerd as compared to the writeObject() method. So using this concept we are able to decide about the which 
+fields need to be serialize and which to not...
+
+************************************************************************************************************************************
+How does externalization internally works?
+1) In the Serialization process, JVM first checks for the Externalizable interface. If objects support Externalizable interface,
+JVM serializes objects using writeExternal() method...
+
+2) if the objects so not support Externalizable but implement Serializable ,Objects are stored using the ObjectOutputStream.
+
+3)For serializable objects , JVM serializes the only instance variables that are not declared with the "transient" keyword.
+
+4) For externalizable objects , we have full control over what pieces of data have to serialize and what to not serialize.
+
+5) Order of reads be the same as that of the order of the writes.
+
+for example:
+     void writeExternal(out)
+     {
+          out.writeInt(id);
+          out.writeString(name);
+     }
+     
+     void readExternal(in)
+    {
+         id=in.readInt();
+         name=in.readString();
+
+
+    }
+this is the correct way of the reading and writing.......
+
+COMPLETE PROGRAM 
+
+package FirstPackage;
+
+import java.io.Externalizable;
+import java.io.IOException;
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
+import java.io.Serializable;
+
+public class Employee implements Externalizable
+{
+      
+	private static final long serialVersionUID = 23L;
+	
+	
+	private  String name; // if you made here "transient" then at that time this variable cannot be considered for 
+	                      // the process of the serialization and deserialization 
+	
+       private int id;
+       
+		public String getName() 
+		{
+			return name;
+		}
+		public void setName(String name) 
+		{
+			this.name = name;
+		}
+		public int getAge() 
+		{
+			return id;
+		}
+		public void setAge(int age) 
+		{
+			this.id = age;
+		}
+		@Override
+		public String toString() 
+		{
+			return "Employee [name=" + name + ", id=" + id + "]";
+		}
+		@Override
+		public void writeExternal(ObjectOutput out) throws IOException //it is basically means--> Serialization
+		{
+			out.writeInt(id);
+			out.writeChars(name);
+			
+		}
+		@Override
+		public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException // ----> Deserialization
+		{
+			id=in.readInt();
+            name=in.readLine();			
+		}
+	       
+	    
+	
+       
+}
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+package FirstPackage;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInput;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+
+public class MainClass 
+{
+     public static void main(String args[]) throws IOException, ClassNotFoundException
+     {
+    	 Employee e=new Employee();
+    	 e.setAge(10);
+    	 e.setName("RK");
+    	 
+  FileOutputStream fout=new FileOutputStream("C:\\Users\\2153490\\eclipse-workspace\\CodeDecode.ser");
+  ObjectOutputStream oout= new ObjectOutputStream(fout); // it throws IOException
+                           // and FileOutputStream throws the FileNotFound Exception 
+                           // but inside the IOException they comes both so that's why only 
+                            //IOException kept there 
+      // as in such the situations we need to put the "general" to "specific" excpetions there 
+  
+  
+  // Now you just need to write the object e into the object output stream 
+  
+  oout.writeObject(e);;;
+  
+  fout.close();
+  oout.close();
+  
+     
+  //Deserialization 
+  
+  
+   FileInputStream fin=new FileInputStream("C:\\\\Users\\\\2153490\\\\eclipse-workspace\\\\CodeDecode.ser");
+   ObjectInputStream iout=new ObjectInputStream(fin);
+   Employee  e1=      (Employee) iout.readObject();
+   
+     System.out.println(e1.getClass()); 
+     
+     
+   System.out.println(e1.toString());
+  
+     
+     }
+}
+
+
+
+
+  

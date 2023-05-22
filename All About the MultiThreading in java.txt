@@ -1,0 +1,134 @@
+/******************************************************************************
+
+Multithreading in java:
+
+     There are 2 ways to create the threads in java 
+     1) using the "Thread class"
+     2) using the "Runnable" interface...
+     
+1) Using the "Thread Class":
+    Thread is a predefined class made in the java and it has lots of the constructors and the methods inbuilted 
+    
+    so basically there are 4 steps to create the Thread using the Thread class 
+    
+    1) extends the Thread class
+    2) override the run() method of the Thread class
+    3) Create the object of the class of which you want to make a Thread.
+    4) then start the Thread using the object and the start() 
+    
+    
+    Life cycle of a Thread:
+    1) "Create a Thread" --New Thread BORN phase -->  Test t = new Test(); 
+    2) "Runnable" ----------> Then it comes in runnable stage --> t.start(); 
+    3) "Running" ------->Here JVM will allocates the processor to the Thread using the "ThreadSchedular"
+    
+    Concept of the ThreadSchedular: It is the part of the JVM which decides which thread to call 
+                                    and its totally based on the alogos: like 1) RoundRobin 2) FirstComeFirstServe
+                                    
+                                    
+    4) "Dead" --------> When the task is completed means it never comes back to the born/create stage.
+    
+    5) It is also a stage present in the Life cycle of the Thread
+      "Non Runnable Stage":
+             Here in this case if you put thread as the "sleep()" or the "wait()" or if the Thread get 
+             "suspend" then these kind of the thread are present in the "NON-RUNNABLE STAGE"
+             
+    now where does thread goes if it wants to came out of the "NON-RUNNABLE STAGE" or suppose the sleep 
+    time is over then ----->It cames back to the "Runnable" stage and then to the "running stage"
+   and then the process continuous .......
+   
+   
+------------------------------------------------------------------------------------------------------------
+  2) Create the Thread using the "Runnable Interface":
+          Note: Runnable interface only had a one method in it------>public abstract run();
+          
+          and that method is public abstract() as well there .....
+          
+          
+          
+  REM*: Relation between the "Thread class" and the "Runnable Interface "
+  
+  public class Thread implements Runnable 
+  {
+      
+  }
+//as this Thread class we extends then as it has the multiple methods present 
+//but the point here is that Runnable is also implemented by the Thread class 
+
+
+So what happens when you call the start() method :
+    So this goes through the "start() method" of the "Thread class" and from there it calls the run() method 
+    of runnable ----> this happens when we are creating therad using the Runnable interface...
+    
+    ---------TASKS of the methods---------
+    1)"run() method" --it is the method which executes when the Thread is in the running state...
+        So thats why inside it we specify the tasks...
+        
+    2)"start() method" --it is the method which play an important role in the runnable() stage of the 
+       lifecycle of the Thread...
+       
+       So the most important part of this method is that this method is useful for crating the "new call stack"
+    OR we also say that this method is responsible for the "Register the Thread to the Thread Schedular"
+    
+    as Thread Schedular helps out to decide which thread to execute when using the different algorithms;
+    like Round Robbin , First Come First Serve ..
+    
+    
+    Note:
+        if you put the expression as t.start() as after the dead stage of the Thread then at that time 
+        it will gies you the "Runtime Exception" as "IllegalStateExcpetion"...
+        
+        
+        +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        
+        
+        2nd way to create a Thread using the "RUNNABLE INTERFACE":
+        Note that Thread and Runnable both are present in the "java.lang package" 
+        
+        public class Main implements Runnable 
+        {
+            public void run()
+            {
+                System.out.println("This is the Thread task");
+            }
+            
+            Main m1=new Main();
+              Thread th=new Thread(m1);
+              
+              th.start();
+            
+            
+        }
+        
+        
+        
+        
+    
+
+
+
+
+
+
+
+*******************************************************************************/
+/*
+public class Main extends Thread   //that means Thread has the methods but now its on you 
+//that you are allow to provide the implementation for these methods based on your requirements...
+{
+    
+    @Override 
+    public void run()
+    {
+        System.out.println("Here the Thread class is present");
+    }
+
+	public static void main(String[] args) 
+	{
+		Main m1=new Main();
+		m1.start();
+	}
+}
+*/
+
+

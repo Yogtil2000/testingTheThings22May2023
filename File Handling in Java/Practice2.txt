@@ -1,0 +1,1 @@
+This is the string and here I am trying to write using the class BufferedWriter

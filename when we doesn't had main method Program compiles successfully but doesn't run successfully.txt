@@ -1,0 +1,26 @@
+
+public class Main
+{
+// 	public static void main(String[] args) {
+// 		System.out.println("Hello World");
+// 	}
+}
+
+
+/*
+
+Note that when you compile the program then as like class which doesn't has anything 
+    so this program compiled successfully i.e when we compile it using the javac Main.java 
+    it will compiled successfully 
+       but when you try to run it,
+           Error: Main method not found in class Main, please define the main method as:
+   public static void main(String[] args)
+or a JavaFX application class must extend javafx.application.Application
+
+then this type of the error comes 
+
+
+
+
+
+*/

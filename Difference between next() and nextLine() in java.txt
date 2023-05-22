@@ -1,0 +1,38 @@
+//how to take char as a input in java 
+//  so the difference between the next() and the nextLine() is that next reads the input only till the 
+//  spaces encountered and the nextLine() basically reads the input from the user till the nextline encounters 
+
+import java.util.Scanner;
+public class Main
+{
+	public static void main(String[] args)
+	{
+		Scanner sc=new Scanner(System.in);
+		
+		String strUsingNext=sc.next();
+		
+		System.out.print(strUsingNext);
+		
+		System.out.println("\n\nFROM HERE THE NEXT LINE...");
+		String strUsingNextLine=sc.nextLine();
+		
+		System.out.println(strUsingNextLine);
+		
+		
+	
+	}
+}
+/* 
+ OUTPUT :
+ 
+ Yogendra Eknath Patil
+Yogendra
+
+FROM HERE THE NEXT LINE...
+ Eknath Patil
+
+
+
+
+
+*/

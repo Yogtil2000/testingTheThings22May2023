@@ -1,0 +1,31 @@
+package ReadTheFile;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+public class ReadFileUsingScanner 
+{
+    public static void main(String args[]) throws FileNotFoundException
+    {
+    	File file=new File("C:\\Users\\2153490\\eclipse-workspace\\FileHandlingInJava\\file1.txt");
+    	
+    	Scanner sc=new Scanner(file);  // this is the line which throws the "FileNotFoundException" 
+    	
+    	
+    	while(sc.hasNextLine())
+    	{
+    		System.out.println(sc.nextLine());
+    	}
+    }
+}
+/* 
+OUTPUT:
+
+This is line number 1
+This is line number 2
+This is line number 3
+
+
+
+*/

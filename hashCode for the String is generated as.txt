@@ -1,0 +1,11 @@
+if you have an string then hashCode for the string is generated as like below 
+
+String str="Code" 
+
+then its hashCode is generated as like below :
+    firstly this string converted to the char array then after that suppose array is a 
+    and n is the length of the string...
+   
+     a[0]*31^(n-1) + a[1]*31^(n-2) + a[2]*31^(n-3) 
+      
+       and then total sum of this gives you the hashcode 

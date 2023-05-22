@@ -1,0 +1,19 @@
+public class Main 
+{
+    public static <T> void print(T t)
+    {
+       System.out.println(t);    
+    }
+    
+    public static void main(String args[])
+    {
+        print(120);
+        print("JAVA WORLD");
+        print(34.344);
+    }
+}
+
+//output:
+120 
+JAVA WORLD 
+34.344

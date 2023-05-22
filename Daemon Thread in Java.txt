@@ -1,0 +1,57 @@
+/******************************************************************************
+
+Daemon Thread in java :
+     This is the thread which runs behind the scenes or it can be run at the background 
+     of the main thread so due to this this thread helps to the main thread by providing the services
+     to the main thread.
+     
+ REM*- You always need to set the Daemon Thread before the actual start() to the thread 
+       If you set the Daemon thread to that particular thread as after the start() 
+       then you get the Runtime Exception as : "IllegalThreadStateException" 
+       
+       Life of Daemon Theread :
+           life of the Daemon thread is depends on the life of the Thread to which it provides the service
+           
+      Daemon Thread Nature :
+           It inherits the nature/ properties from its parent thread.
+           
+           Priorities are same of both the parent and child.
+           
+    JVM role in Daemon Thread :
+         basically JVM works till normal threads present ,
+              but bychance if there is only the Daemon Thread is working 
+              then JVM kills the Daemon Thread and then JVM shuts down.
+              
+              So JVM doesn't dependent on the Daemon Thread.
+              
+    * Most of the times "Daemon thread" has the "low priority" but we can change its priority 
+    according to our needs.
+    
+    One of the most important things related to this is that can we make the main thread() as 
+    the Deamon thread ------> NO 
+    because : start() METHOD FOR THE MAIN METHOD IS INVOKED BY THE JVM ALREADY AND IF NOW 
+              YOU ARE TRIED FOR THE setDaemon(true) then at that time it will gives you the 
+              Runtime Exception : "IllegalThreadStateException" 
+              
+              "IllegalThreadStateException"---------------------
+              
+              
+*******************************************************************************/
+
+public class Main extends Thread
+{
+    public void run()
+    {
+        System.out.println("Executing the daemon thread");
+        
+        System.out.println(Thread.currentThread().isDaemon());
+    }
+	public static void main(String[] args) 
+	{
+		Main t=new Main();
+		t.start();
+	
+		System.out.println(t.isDaemon());
+		
+	}
+}

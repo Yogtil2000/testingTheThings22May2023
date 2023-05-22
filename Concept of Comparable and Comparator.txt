@@ -1,0 +1,162 @@
+
+
+***********************************************************************************************************************************************
+###########Concept of comparator used for sort the custom object based on the name(String) in the reverse order using the compareTo()
+
+package ConceptOfComparator;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
+class Student 
+{
+	private int id;
+	private String name;
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public Student(int id, String name) {
+		super();
+		this.id = id;
+		this.name = name;
+	}
+	@Override
+	public String toString() {
+		return "Student [id=" + id + ", name=" + name + "]";
+	}
+	
+	
+}
+public class MainClass3 
+{
+    public static void main(String args[])
+    {
+    	
+    	 Comparator<Student> comparator=new Comparator<Student>()
+    	{
+
+			@Override
+			public int compare(Student i, Student j) 
+			{
+				return j.getName().compareTo(i.getName());  //this is the remarkable step here if we want it in the 
+                                                                  //ascending order we just need to do the reverse of the i and j in the 
+                                                                    // logic only such that return i.getName().compareTo(j.getName());
+
+			}
+		};
+    	
+    	
+    	List<Student> list=new ArrayList<>();
+    	list.add(new Student(21, "Navin"));
+    	list.add(new Student(20, "Airan"));
+    	list.add(new Student(12, "John"));
+    	list.add(new Student(18, "Parul"));
+    	list.add(new Student(20, "Kiran"));
+    	list.add(new Student(20, "Ziran"));
+    	Collections.sort(list,comparator);
+    	
+    	for(Student s:list)
+    	{
+    		System.out.println(s);
+    	}
+    	
+        
+    }
+}
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Example of the Comparable is below:
+package ConceptOfComparable;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+class Student1 implements Comparable<Student1> 
+{
+	private int age;
+	private String name;
+	
+	public int getAge() 
+	{
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public Student1(int age, String name) {
+		super();
+		this.age = age;
+		this.name = name;
+	}
+	
+	@Override
+	public String toString() {
+		return "Student [age=" + age + ", name=" + name + "]";
+	}
+	@Override
+	public int compareTo(Student1 that) 
+	{
+		// so in this case we have only one object and where is the second 
+		// as we are in the class itself so that's why we doesn't need third for making our comparison we give this authority 
+		// to the Student itself so "this" here is refers to the current object there... 
+		if(this.age>that.getAge())
+		{
+		    return 1;
+		}
+		else 
+		{
+			return -1;
+		}
+	}
+	
+	
+}
+public class MainClass2 
+{
+    public static void main(String args[])
+    {
+    	   List<Student1> list=new ArrayList<>();
+    	     list.add(new Student1(12,"Navin"));
+    	     list.add(new Student1(45,"John"));
+    	     list.add(new Student1(18,"Capital"));
+    	     list.add(new Student1(2,"Parcing"));
+    	     list.add(new Student1(7,"Zscaler"));
+    	     
+    	     
+    	 Collections.sort(list);
+    	 
+    	     
+    	 for(Student1 s:list)
+    	 {
+    		 System.out.println(s);
+    	 }
+    }
+     
+}
+======================================================================================================================================
+SO you have two choices either you make your class implements "Comparable" , if you don't want to do this you can also do the "comparator"
+INFACT IF YOU MENTIONED THE COMPARABLE still you can "override" the logic of the "Comparator" thats your choice...
+
+
+WHAT is Comparator ?
+---->If you want to specify on which logic sort the elements you can use the comparator.
+
+What is Comparable ?
+----> If you want to give the power itself to the class itself or compare its objects to itself you can use the comparble there.

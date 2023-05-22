@@ -1,0 +1,1 @@
+This string is mainly written using the BufferedWriter there 

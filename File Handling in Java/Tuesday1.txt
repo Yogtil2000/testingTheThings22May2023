@@ -1,0 +1,4 @@
+THis is the first line I am trying to write on the file named Tuesday1.txt file so here in this case one thing I 
+want to mension is that FileWriter gives us the IOException and BufferedWriter itself not gives any exception only the 
+write() method of the BufferedWriter() gives us the exception there i.e the IOException ....
+And the other thing is that the write() method of the FileWriter class also gives the IOException

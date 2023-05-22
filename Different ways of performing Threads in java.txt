@@ -1,0 +1,135 @@
+//DIFFERENT CASES OF EXECUTING THREADS IN JAVA:
+/* 
+1)Performing single task from single thread.
+2)Performing single task from multiple thread.
+3)Performing multiple task from single thread.
+4)Performing multiple task from multiple threads.
+
+
+
+1)Performing single task from single thread.
+EX:
+public class Main extends Thread 
+{
+    public void run()
+    {
+        System.out.println("Single task from single thread...");
+    }
+    public static void main(String args[])
+    {
+        Main m1=new Main();
+        m1.start();
+        
+    }
+}
+----------------------------------------------------------------------
+2)Performing single task from multiple threads...
+EX:
+public class Main extends Thread 
+{
+    public void run()
+    {
+        System.out.println("Single task from single thread...");
+    }
+    public static void main(String args[])
+    {
+        Main m1=new Main();
+        m1.start();
+        
+        Main m2=new Main();
+        m2.start();
+        
+        Main m3=new Main();
+        m3.start();
+        
+        
+        
+    }
+}
+-----------------------------------------------------------------------------------------------
+3) Performing multiple task from single thread 
+   This case is not possible as here thread cannot be subdivided and the most important thing is that 
+   it is made like the linear way of the executing rather than executing the concurrent way 
+   
+   so performing the "multiple tasks" from the "single threads" is not possible...
+   
+-----------------------------------------------------------------------------------------------
+4)Performing multiple tasks from the multiple Threads:-
+   --number of the tasks= number of the classes 
+   
+   class Thread1 extends Thread 
+{
+    public void run()
+    {
+        System.out.println("Executing Thread1...");
+    }
+}
+class Thread2 extends Thread 
+{
+    public void run()
+    {
+        System.out.println("Executing Thread2...");
+    }
+}
+class Thread3 extends Thread 
+{
+    public void run()
+    {
+        System.out.println("Executing Thread3...");
+    }
+}
+public class Main 
+{
+    public static void main(String args[])
+    {
+        Thread1 t1=new Thread1();
+        t1.start();
+        
+        Thread2 t2=new Thread2();
+        t2.start();
+        
+        Thread3 t3=new Thread3();
+        t3.start();
+        
+    }
+}
+
+
+
+*/
+class Thread1 extends Thread 
+{
+    public void run()
+    {
+        System.out.println("Executing Thread1...");
+    }
+}
+class Thread2 extends Thread 
+{
+    public void run()
+    {
+        System.out.println("Executing Thread2...");
+    }
+}
+class Thread3 extends Thread 
+{
+    public void run()
+    {
+        System.out.println("Executing Thread3...");
+    }
+}
+public class Main 
+{
+    public static void main(String args[])
+    {
+        Thread1 t1=new Thread1();
+        t1.start();
+        
+        Thread2 t2=new Thread2();
+        t2.start();
+        
+        Thread3 t3=new Thread3();
+        t3.start();
+        
+    }
+}

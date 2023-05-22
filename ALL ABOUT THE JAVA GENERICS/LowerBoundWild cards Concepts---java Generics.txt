@@ -1,0 +1,32 @@
+//Concept of the Lower Bounded Wildcards ----> here lower limit is given but we are able to take the super or it or Upper of it
+// here the purpose is that restrict the unknown type to be a specific type or supertype of that type.
+// here in this case lower limit will be given and doesn't allowed to be lower that this 
+// here super keyword is used 
+//Example List<Integer> --->It is work with the List of type int only 
+// but List<? super Integer> ---> It is work with the Integer as well as the classes which are superclasses 
+// of the Integer class 
+import java.util.List;
+import java.util.Arrays;
+class LowerBoundWildCard 
+{
+    public static void display(List<? super Integer> list) // so here they provide the lower limit but we can 
+    //able to take the super or the upper things 
+    // in this example we accept the "Integer" and the "Number" 
+    {
+          for(Object o:list)
+          {
+              System.out.println(o);
+          }
+    }
+}
+public class Main 
+{
+    public static void main(String args[])
+    {
+        List<Integer> list1=Arrays.asList(45,46,78,567,78);
+        LowerBoundWildCard.display(list1);
+        
+        List<Number> list2=Arrays.asList(387,4.5,5.4,8.8);
+        LowerBoundWildCard.display(list2);
+    }
+}

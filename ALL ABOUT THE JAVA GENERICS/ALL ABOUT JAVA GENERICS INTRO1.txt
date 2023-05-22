@@ -1,0 +1,166 @@
+/* 
+Introduction to the Java Generics :
+    Java Generics Programming is introduced in J2SE 5 to deal with the type safety of  the objects 
+    and provide the abstraction over the types.
+         It makes the code stable by detecting the errors at the compile-time.
+         
+         Before the Generics we can store any  kind of the data in the collection.
+         Now Generics force the Java Programmer to store the specific type of the objects.
+         
+ADVANTAGES OF Java Generics:
+    1) TYPE SAFETY:
+          We can hold only a single type of objects in generics. It doesn't allow to store the other objects.
+          
+          without the generics we are able to store any type of the objects.
+          
+          List list = new ArrayList<>();
+          list.add(10);
+          list.add("10"); 
+        ..........Here in this case we doesn't specify the General or Fixed type to which we want to store the 
+        data 
+        
+        But in the case of the Java Generics it is compulsory to specify the "TYPE" there 
+        List<Integer> list=new ArrayList();
+        
+          list.add(10);
+          list.add("10");  //Gives the compile time error....
+          
+          
+       2) TYPE CASTING IS NOT REQUIRED..
+       
+           Before the generics we need to type cast there 
+           List list=new ArrayList<>();
+           list.add("Hello");
+           
+           String str=(String) list.get(0);  //typecasting is done here conversion of the Object to the String
+
+            But as the Java Generics comes from that point of time " Don't need to typecast the object"
+            
+    3) COMPILE TIME CHECKING 
+     
+           It is checked at the compile time so problem not occurs at the runtime.
+            A programming strategy is that it is far better to handle the problem at the compile time than runtime
+
+          List<Integer> list=new ArrayList<>();
+          list.add(10);
+          list.add("10");//compile time check 
+          
+          
+ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ SYNTAX TO USE GENERICS COLLECTION:
+     classORInterface<Type> 
+     
+ Example to use Generics in Java :
+     Arraylist<String>
+     
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ FULL EXAMPLE OF GENERICS IN JAVA:
+      Here we are using the ArrayList class but you can use any of the collection class such as 
+      LinkedList , HashSet , TreeSet , HashMap etc.
+      
+Complete Java Generics Program :
+
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) 
+	{
+		ArrayList<String> list=new ArrayList<>();
+		list.add("Hello");
+		list.add("World");
+		list.add("Of");
+		list.add("Java");
+		
+	//	list.add(234); //compile time error ----> incompatible types: int cannot be converted to String 
+	
+	
+	Iterator<String> it=list.iterator();
+	while(it.hasNext())
+	{
+	    System.out.println(it.next());
+	}
+		
+		
+		
+	}
+}
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+GENERIC CLASS:   A class which refers to the any type is known as the Generic class.
+       We use the T as the type name there using which we can specify the Generic class of specific type.
+       
+class MyGen<T>
+{  
+    T obj;  
+    void add(T obj){this.obj=obj;}  
+    T get(){return obj;}  
+} 
+
+type T indicates that it can refer to any type like Integer,String ,Float ,Double and Employee) 
+ 
+ BELOW IS THE BEST EXAMPLE OF GENERIC CLASS:
+ 
+ import java.util.*;
+
+
+class MyGen<T> 
+{
+    T obj;
+    void add(T obj)
+    {
+        this.obj=obj;
+    }
+    
+    T get()
+    {
+        return obj;
+    }
+}
+
+
+public class Main 
+{
+    public static void main(String args[])
+    {
+       MyGen<Integer> my=new MyGen<>();
+       my.add(43);
+       System.out.println(my.get());
+      
+    }
+}
+
+
+
+
+
+
+
+
+
+
+-------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+*/
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) 
+	{
+		
+       Map<Integer,String> map=new HashMap<>();
+       map.put(12,"Rahane");
+       map.put(100,"Dhoni");
+      map.put(-300,"Raina");
+        
+       for(Map.Entry<Integer,String> en:map.entrySet())
+       {
+           System.out.println(en.getKey()+" "+en.getValue());
+       }
+       
+		
+		
+	}
+}

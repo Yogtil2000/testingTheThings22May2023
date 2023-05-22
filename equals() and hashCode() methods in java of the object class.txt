@@ -1,0 +1,174 @@
+/* 
+equals() and hashCode() method in java:
+so equals() and hashCode() these methods are defined in the Object class which is parent class 
+ for all the java objects. For this reason all the java objects are inherit the default implementation of these methods 
+    as we can also override the behaviour/implementation  of these methods 
+ 
+
+Java hashCode()
+below is the method as implemented in the object class 
+public int hashCode()
+{
+    //TODO return the hashCode() 
+}
+
+Java equals() 
+below is the method as implemented in the object class 
+public boolean equals(Object obj)
+{
+    return (this==obj);
+    
+}
+
+
+
+
+*/
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args)
+	{
+		Pen pen1=new Pen(10,"Blue");
+		Pen pen2=new Pen(10,"Blue");
+		
+		System.out.println(pen1==pen2); // false---this returns false because here the address comparison will
+		   // happens and as we know new object will be created everytime when we used the new keyword 
+		   
+		System.out.println(pen1.equals(pen2));  //false-- this returns false as because the content in them is same   
+	// default implementation of equals--if they are not points to the same location they are different things
+	// 	default implementation of the equals----if they are not points to the same memory location 
+	 //  as it by default says if the object refers at the same location so then there content is same as well
+	 
+	 // so these objects are different 
+	  
+	 /*
+	 
+	 public boolean equals(Object obj)
+    {
+        Pen that= (Pen) obj;
+        boolean res=this.price==that.price && this.colour.equals(that.colour);
+        return res;
+    }
+	 
+	 
+	 if we provide such kind of the implementation of the equals() method then it will gives the true output 
+	 
+	 As now both the pens are at the different memory location but we define our implementation to the 
+	     equals() method so that's why here we get the true output 
+	         otherwise even if we used the .equals() method but its default implementation 
+	            says that I am firstly going to check the reference then if they are at the same location 
+	               then the content absolutely same.....
+	 
+	 */
+	 
+	 System.out.println(pen1); // Pen@3b22cdd0
+	 System.out.println(pen2); // Pen@1e81f4dc 
+	 
+	 // as we have the equals methods then also if we try to add the two pens in the hashset they are added 
+	 // successfully both 
+	 
+	 Set<Pen> pens=new HashSet<>();
+	 pens.add(pen1);
+	 pens.add(pen2);
+	 System.out.println(pens); //  [Pen@3b22cdd0, Pen@1e81f4dc]   
+	 //from the above output we noticed that still java doesn't treat them as one java treat them as the different till
+  // so here hashCode comes has the role 
+  
+  /* 
+  
+     equals() and the hashCode() methods are working simultaneously as if you  define the implementaion 
+         for the equals() then java document says you also need to provide the override version for the 
+            hashCode() method as well 
+                and suppose if you define the equals() method for the two variables then for the same 
+                        variables you  need to provide the hashCode method 
+  
+  
+  */
+		
+	}
+}
+
+/* 
+Contract of equals() and hashCode()
+  1) If the two objects are equal then there hashCode must be same 
+  2) But if the two objects have the same hashCode then the objects may or may not be same...
+
+
+
+*/
+class Pen 
+{
+    int price;
+    String colour;
+    
+    public Pen(int price,String colour)
+    {
+        this.price=price;
+        this.colour=colour;
+    }
+    
+    public boolean equals(Object obj)
+    {
+        Pen that= (Pen) obj;
+        boolean res=this.price==that.price && this.colour.equals(that.colour);
+        return res;
+    }
+    
+    @Override
+    public int hashCode()
+    {
+        return price+colour.hashCode();
+    }
+    
+    
+}
+
+
+
+code :
+
+
+
+public class Main 
+{
+    public static void main(String args[])
+    {
+        Pen pen1=new Pen(10,"Blue");
+        Pen pen2=new Pen(10,"Blue");
+        
+        System.out.println(pen1==pen2); //false 
+        System.out.println(pen1.equals(pen2)); // false 
+        
+        System.out.println(pen1.hashCode());
+        System.out.println(pen2.hashCode());
+    }
+}
+class Pen 
+{
+    int price;
+    String colour;
+    
+    public Pen(int price,String colour)
+    {
+        this.price=price;
+        this.colour=colour;
+    }
+    
+    @Override  //here we changed the default implementation of the equals() method 
+    public boolean equals(Object obj)
+    {
+        Pen that=(Pen) obj;
+        return this.price==that.price && this.colour.equals(that.colour); 
+    }
+    
+    @Override
+    public int hashCode()
+    {
+        return price+colour.hashCode();
+    }
+    
+}
+
+
+

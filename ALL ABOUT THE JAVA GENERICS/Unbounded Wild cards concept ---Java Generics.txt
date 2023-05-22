@@ -1,0 +1,33 @@
+import java.util.*;
+import java.util.Arrays;
+class UnboundWildCards 
+{
+    public static void display(List<?> list)
+    {
+        for(Object o:list)
+        {
+            System.out.println(o);
+        }
+    }
+}
+public class Main 
+{
+    //Concept of unbounded WildCards :
+    // The undounded wildcard reresent the list of the unknown types such as List<?> 
+    // this approach can be useful in the following scenario:
+    //1) When the given method is implemented by using the functionality provided in the Object class 
+    //2) When the Generic class contains the methods that doesn't depends on the any type of the parameter.
+   
+   public static void main(String args[])
+   {
+    
+        List<Integer> list1=Arrays.asList(34,45,56,67,78);
+       // UnboundWildCards obj=new UnboundWildCards();
+        UnboundWildCards.display(list1);
+        
+        
+        List<String> list2=Arrays.asList("JAVA","C++","Python",".Net");
+         UnboundWildCards.display(list2);
+    
+   }
+}

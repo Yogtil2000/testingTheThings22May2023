@@ -1,0 +1,21 @@
+import java.util.*;
+public class Main 
+{
+    public static void main(String args[])
+    {
+        Map<Integer,String> map=new HashMap();
+        map.put(1,"Dhoni");
+        map.put(2,"Raina");
+        map.put(3,"Rahane");
+        
+        Set<Map.Entry<Integer,String>> set=map.entrySet();
+        
+        Iterator<Map.Entry<Integer,String>> itr=set.iterator();
+        
+        while(itr.hasNext())
+        {
+            Map.Entry e=itr.next();
+            System.out.println(e.getKey()+" "+e.getValue());
+        }
+    }
+}

@@ -1,0 +1,17 @@
+import java.util.Scanner;
+public class Main
+{
+	public static void main(String[] args) 
+	{
+	    String str="abi/df/dfg";
+	  //  Integer a=10;  --Not allowed 
+	   Scanner sc=new Scanner(str); //here to the Scanner object we passed the String object reference
+	   
+	   System.out.println(sc.nextLine());
+	   // if upperside is the string object in Scanner constructor and here you use nextInt() then exception 
+	   // comes as InputMismatchException
+	}
+}
+
+OUTPUT:
+abi/df/dfg

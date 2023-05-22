@@ -1,0 +1,18 @@
+public class Main
+{
+    public void Main()
+    {
+        System.out.println("Trying the method...");
+    }
+	public static void main(String[] args) 
+	{
+	   	Main Main =new Main();
+	   	Main.Main();
+	}
+}
+
+
+// so here you need to note that it is not a problem even if you put the same name of the 
+  //  class---> method---->object    
+      //   if all of them have the same name as well then also "THERE IS NO PROBLEM " 
+      

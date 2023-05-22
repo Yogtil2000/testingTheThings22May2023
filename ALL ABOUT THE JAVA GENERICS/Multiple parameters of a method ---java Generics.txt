@@ -1,0 +1,22 @@
+public class Main 
+{
+    public static <T,U> void print(T t,U u)
+    {
+       System.out.println(t+"   - "+u);    
+    }
+    
+    public static void main(String args[])
+    {
+        print(34,"Java");
+        print(90.90,"DSA");
+        print("Java","World");
+    }
+}
+
+/* 
+34   - Java
+90.9   - DSA
+Java   - World
+
+
+*/

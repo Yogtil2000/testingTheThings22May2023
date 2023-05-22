@@ -1,0 +1,50 @@
+/*
+
+Priorities methods in Java :
+    priority is nothing but the number which tells the JVM that 
+    when allocates the process basically the thread which has the higher priority will allocates the 
+    processor first as compared to the thread which allocates the processor later...
+    
+    Priorities are from the 1 to 10 
+        there is no priority like 0 ,-1 ,11 like that 
+            if you specified the invalid priority then that results into the Runtime Exception 
+            as the "IllegalArgumentException" 
+            
+as we have mainly 2 methods for the priorities 
+1) getPriority 
+2) setPriority
+ 
+Note: By default priority setted by the JVM to the main thread is 5 
+      so here for example inheritance rule also applies as the thrad which we create from the 
+      main thread has the bydefault priority is same as the main thread ...
+      
+      And the another thing to note is that there is no restrictions on when you are setting your 
+      priorities like it is also allowed after the thread start i.e after the start() method as well 
+      
+      
+
+
+
+
+*/
+public class Main extends Thread 
+{
+    public void run()
+    {
+        System.out.println(Thread.currentThread().getPriority());
+    }
+    public static void main(String args[])
+    {
+        Main t2=new Main();
+        t2.setPriority(MAX_PRIORITY);
+        t2.start();
+        
+        Main t1=new Main();
+        t1.setPriority(MIN_PRIORITY);
+        t1.start();
+        
+        
+        
+        
+    }
+}

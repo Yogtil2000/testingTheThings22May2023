@@ -1,0 +1,27 @@
+package CreateFileOnAbsolutePath;
+
+import java.io.File;
+import java.io.IOException;
+
+//Java Program to create the file in the Downloads folder...
+// so for the Downloads there is an specified prefix so it can be got by the System.getProperty("user.home"); method of the System class
+public class CreateFile 
+{
+    public static void main(String args[]) throws IOException
+    {    //here we get the IO exception as here suppose we created the file and below it if we tried to read or write on the file '
+    	// and suppose you didn't get it then it will be a problem so to avoid this flaw in future we get 
+    	//"Chwcked Exception called as the IOException here" ;
+    	String home = System.getProperty("user.home");
+    	
+    	System.out.println(home);
+    	File file = new File("C:\\Users\\2153490\\Desktop\\newFileNow3.txt");  //here as well you can either use the // or \\ no matters 
+    	if(file.createNewFile())
+    	{
+    		System.out.println("File Created Successfully...");
+    	}
+    	else 
+    	{
+    		System.out.println("File exists already...");
+    	}
+    }
+}

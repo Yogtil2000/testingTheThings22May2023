@@ -1,0 +1,15 @@
+First of all ,the concept used in the serialization and deserialization is the "Reflection" 
+   The types which allowed in the serialization and deserialization are as below:
+   ----private
+   ----static
+   ----and remaining others as well
+---- ------------------------------------------------------------------------------------------------------------------------
+   The fields which are "not allowed" in the process of the serialization and deserialization are as below:
+
+   ---static 
+   ---transient 
+
+------------------------------------------------------------------------------------------------------------------------------
+
+
+        

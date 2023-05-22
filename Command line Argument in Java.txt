@@ -1,0 +1,55 @@
+//Command line Argument in Java 
+public class Main
+{
+     public static void main(String args[])
+     {
+         if(args.length>0)
+         {
+             System.out.println("The command line arguments are :");
+             for(String str: args)
+             {
+                 System.out.println(str);
+             }
+             
+         }
+         else 
+         {
+             System.out.println("No command line arguments.....");
+         }
+     }
+}
+/*
+Command line Argument in Java are the arguments which are passed to the JAVA program at the runtime 
+    and these arguments are passed from the console at the time of the runtime 
+         so when we compile a program 
+         like 
+            javac Main.java 
+               
+               
+                but at the time of the runtime we need to pass the arguments 
+                     these arguments are stored in the form of the String array 
+                        and we can convert them into accordance of our need like in int float boolean 
+                             as they are in String format by default 
+                                 
+                                 like java Main Hello World What are you doing right now ........
+                                 
+                                 
+                                   so in this way we are providing the command line arguments through
+                                      the console to the main method 
+                                           
+                                           
+                                           and we can access them as using the indexing of the array 
+                                           
+                                           
+M IMP:  when command line arguments supplied to the JVM , JVM wraps these arguments and passed args[] array 
+         and we can access it using the args[0] , args[1]  like that 
+              
+     Compiling and Running the Program :
+     
+    comipling------>     javac Main.java 
+         
+      Running -----> java Main Hello World What world doing right now ??????
+      
+      so here at the run time we passed the arguments like Hello -- World --What --World--doing--right--now 
+
+*/

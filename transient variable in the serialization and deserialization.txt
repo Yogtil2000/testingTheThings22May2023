@@ -1,0 +1,2 @@
+when we use the transient variable infront of the any variable then at that time that particular variable is ignored by the 
+compiler and they are not considered while performing the "Serialization" and "Deserialization".

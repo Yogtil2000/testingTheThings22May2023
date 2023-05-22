@@ -1,0 +1,28 @@
+import java.util.*;
+class Testing 
+{
+    
+}
+public class Main
+{
+	public static void main(String[] args)
+	{
+	     	ArrayList list=new ArrayList();  //so by default here the type is "Object"
+	     	list.add(1);
+	     	list.add("name");
+	     	
+	     	Integer i=(Integer) list.get(0);  // as the initially  type is object so that's why we need to 
+	     	                                  // convert them from the "Object" to "Integer" 
+	     	                                  //otherwise it will gives you the compilation error 
+	     	                                  
+	    Integer num=(Integer) list.get(1);
+	    
+	     	 // here you doesn't get the compilation error you get the runtime exception i.e "ClassCastException"                                
+	     	
+	     	
+	     	// so to avoiding such the stuffs we need an type safety here 
+	     	// as compilation error is always be better than the runtime exception so its a good practice 
+	     	// to specify the datatypes early so because of this only the type safety is maintained ..
+	     	
+	}
+}

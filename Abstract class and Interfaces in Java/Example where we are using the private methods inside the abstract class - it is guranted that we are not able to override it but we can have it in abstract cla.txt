@@ -1,0 +1,29 @@
+abstract class MyAbstractClass 
+{
+    private void private_method()
+    {
+        System.out.println("I am private method present in the abstract class");
+    }
+    
+    public void public_method()
+    {
+        private_method();
+        System.out.println("I am public method present in the abstact class");
+    }
+}
+public class Main extends MyAbstractClass
+{
+	public static void main(String[] args)
+	{
+	    Main m1=new Main();
+	    m1.public_method();
+		
+	}
+}
+
+//output:
+/* 
+
+I am private method present in the abstract class
+I am public method present in the abstact class
+*/

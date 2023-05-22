@@ -1,0 +1,23 @@
+public class Main extends Thread 
+{
+    public void run()
+    {
+        System.out.println("Thread is in the Running stage...");
+    }
+    
+    public static void main(String args[])
+    {
+        Main m1=new Main();
+        m1.start();
+        m1.start();
+    }
+}
+
+// Now as once the start() is invoked then after that it goes forward in the subsequent stages like 
+// runnable running and then Dead but here we are trying to start() the thread() which is in 
+// the "dead stage "...
+
+
+// So here the "Runtime Exception " will occurs which is "java.lang.IllegalThreadStateException" 
+
+//java.lang.IllegalThreadStateException ---

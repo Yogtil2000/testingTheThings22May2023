@@ -1,0 +1,47 @@
+package ReadTheFile;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class FileInfo2 
+{
+    public static void main(String args[]) throws IOException
+    {
+    	BufferedReader reader=null;
+    	try 
+    	{
+         
+    		FileReader fileReader=new FileReader("C:\\Users\\2153490\\OneDrive\\Java Concepts Snippets\\File Handling in Java\\Today1.txt");
+            
+    		
+    		
+    		String line=null;
+    		
+    		reader=new BufferedReader(fileReader);
+    		while((line=reader.readLine())!=null)
+    		{
+//    			String row[]=line.split(" ");
+//    			for(String str:row)
+//    			{
+//    				System.out.printf("%4s",str);
+//    			}
+//    			System.out.println();
+    			
+    			System.out.println(line);
+    			
+    		}
+    		
+    	
+    	}
+    	catch (Exception e) 
+    	{
+			e.printStackTrace();
+		}
+    	finally {
+			reader.close();
+		}
+}
+    	
+    	
+}

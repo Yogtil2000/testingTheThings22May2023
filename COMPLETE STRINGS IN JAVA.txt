@@ -1,0 +1,201 @@
+public class Main
+{
+	public static void main(String[] args) 
+	{
+		//there are two ways to create an string in java 
+		//1.using the string literal 
+		//2. using the new keyword 
+		
+// 		String str="Code";  //using this way of creation of the string the string object only created 
+// 		//in the string constant pool if its not already created 
+// 		System.out.println(str.hashCode());
+		
+// 		String str1="Code";
+// 		System.out.println(str1.hashCode());
+		
+// 		String str2=new String("Code");
+// 		System.out.println(str2.hashCode());
+		
+		//this also be proved by using the == as == focuses on the adddress comparison 
+		  // and equals method focuses on the value comparison 
+		    String str1="Department";
+		    String str2=new String("Department");
+		    
+		    System.out.println(str1.hashCode());
+		    System.out.println(str2.hashCode());
+		
+	}
+}
+/*
+Strings in Java :
+   as there are two ways to create the strings in the java 
+   1.using the literal 
+   2.using the new keyword 
+   
+  1.using the literal 
+      String str="Code" //if you careated the string object like this then using which you get the memory 
+      only in the string constant pool 
+      ..but it also gets when the same literal not present in the String Constant Pool 
+        otherwise it points to the same memory location as to the already present variable 
+        
+        example :
+              String str1="Code";
+              String str2="Code";
+                  here in this case str2 also points to the same memory location as that of the str1 points 
+           and this can be easily proved by using the == operator as == operator mainly used for the 
+             address comparison and equals() method used for the values comparison 
+             
+  2.using the new Keyword 
+        String str1=new String("Code");
+    so using this way 2 objects are created , first is in the heap memory and second one in the String constant pool 
+        but the thing here is that pointing is to the string in the "heap"     
+                  as if suppose in the future as the same value comes into the picture then direct 
+                     pointing will happens without the manual creation again 
+                     
+                     examples:
+                          String str1=new String("Code");
+                          String str2=new String("Code");
+                          .....Note that in the case of the making the string using the new keyword 
+                          ..everytime the new object is created in the heap memory 
+                          .irrespective of the value already present or not 
+                          
+                          but at the time of making inside the String Constant pool using this same method 
+                            of the new keyword 
+                                 these already present or not will checked 
+                                 
+                             String str1=new String("Code");
+                             String str2=new String("Code"); 
+                             System.out.println(str1==str2);//false 
+                             //as both are created to the new memory location so that's why 
+                             
+                             
+     ****What is String Constant Pool****
+          The memory space allocated in the heap memory to store the String literals is called as the 
+          String Constant Pool......
+          
+          as this never happens in the string constat pool that objects with the same value present in the SCP.
+     basically means no two objects in the string constant pool can have the same value 
+     each and every object in this particular pool is going to be the unique...
+
+----Why does the Java provides you the String Constant Pool(SCP) as we can store the objects in the heap 
+  memory ? 
+  
+  As String Constant Pool provides you the fascility to reuse the objects in the String Constant Pool.
+     As in the case of the "HEAP MEMORY " though they have the same value but the everytime when 
+         we create the object using the new keyword then at that time new Object creation will happend 
+
+But when we are discussing about the SCP then at that time JVM checks in the String Constat Pool 
+   that is the string already available or not ...
+        if the string is already available then JVM points to the same rather than creating the new Object.
+          
+        so using this it helps to the "speeding up the application "  and also helps for the memory saving 
+         as we are reusing the existing things for the same content 
+         
+         
+         
+         
+         
+    CONCEPT :
+        suppose creating an object using the new keyword 
+              String str=new String("Code");
+               ...so using this line 2 objects will be created one in the "Heap memory" and another 
+               one is in the SCP 
+               
+               but the thins to note here is that str only points to the object in the heap 
+                  and the object created in the SCP is unattended... 
+                      so the point here is that does "Garbage Collector" clerars this object as it is 
+                       unattended...
+                           "String Constant Pool doesn't provides any rights to the GARBAGE COLLECTOR"
+                      
+       
+SCENARIO 1:
+     How many  objects are created in the below code snippet ?
+         String s1="Code";
+         String s2=new String("Code");
+         
+         Discussion:
+              as by the s1 object will created in the String Constant Pool 
+              and by using the s2 object firstly created in the Heap memory and later on tries 
+                to create in the String Constant Pool BUT as "Code" literal already present in the 
+                 SCP so no need to create in the String Constant Pool 
+                 
+                as the conclusion there are 2 objects are created using the above Code snippet... 
+              
+              ...Java goes line by line as it is interpreted as well 
+              
+  
+SCENARIO 2:
+    How many objects are created in the below code snippet ?
+        String s1=new String("Code");
+        String s2=new String("Code");
+        
+        so here by the s1 2 objects are created one in the heap memory and another one in the SCP.
+        but using the s2 only one object is created and that is in the Heap as 
+            already with the same content so no need to create it again in the SCP.
+            
+            
+            
+ "Concept of intern method " 
+ 
+    String s1="Code";
+    String s2=new String("Code");
+    
+       as if we apply the intern() method on the s2 then JVM will searches for the content same as on 
+          which the we apply the intern and then return it 
+          
+          String s3 = s2.intern();
+          
+          Snippet:
+           String s1="Code";
+		   String s2=new String("Code");
+		
+		   String s3=s2.intern();
+		   System.out.println(s1==s3); //true 
+		   
+		   that doesn't means s2 and s3 are same 
+		   
+		   as the task of the intern() method is to just go into the String Constant Pool 
+		       and checks for the same available as here ex s2 as that never means s2 and s3 are not equal 
+		       
+		       so intern() method helps to return the reference as on which variable we send it 
+		         as suppose s2.intern() so it tries to find the same value as present in the SCP 
+		            and returns that string 
+		            
+		            
+		  Why strings made immutable in Java ?----strings in java deals with many datasources like files,databases and even objects present in the network 
+		       The major reason behind making the Strings immutable in java is "Security " as Strings in java 
+		       are used to access many of the datasources like files,Databases or even objects founds in the
+		       network.
+		          Even sometimes we stores usernames,passwords in the form of the strings which can't be 
+		            modified once created .
+		            
+		            As "immutability" means unmodifiable or Unchangeable 
+		       
+		 strings in java deals with many datasources like files,Databases and even the objects on the internet as well 
+           as sometimes the username and passwords are also in the form of the strings so once created cannot be modified....
+  
+  
+  ****Proving that String object in Java is Immutable*****
+          public class Main
+                  {
+                	public static void main(String[] args) {
+                		String s1="Code";
+                	    System.out.println(s1.hashCode());  // 2105869
+                	    
+                	    s1=s1+" Decode";
+                	    System.out.println(s1.hashCode());  // -522990719
+                	    
+                	    //so as here in this case an new object is created without making the modification in  the same one....
+                	}
+                 }
+             
+             so this snippet will defines String Object in Java is immutable.....
+  
+  
+  
+  
+  
+  
+  
+     
+*/

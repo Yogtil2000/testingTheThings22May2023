@@ -1,0 +1,138 @@
+/* 
+Internal working of hashMap :
+   Hashmap is also a one kind of data structure which stores the data in the form of the key-value pairs 
+    
+    The speciality of the Hashmap is basically --- it does search , insert and delete operations in O(1) time 
+        as none of the data structure has that much kind of the efficiency 
+        
+        ....But the scenario with the hashMap is stores the data in "random fashion" and 
+        how does it happens like we stored it in the sequential fashion and it  will stored in the random way 
+---it is because of the "hash" as due to the using the hash data(key-value) will stored and mapping will done 
+using the map so in this way it is named as the "hashMap" 
+     so basically hashing is the concept which is used in the hashmap 
+          using this concept long ,very long string data may converted into the small finite amount of the 
+         string or data .
+         
+         ex: h(i)----output1 
+             h(i)----output1 
+             h(i)----output2.....this never happens 
+             
+             h(i')---output1 ......it is also possible but we try to avoid this kind of the collision mainly
+
+
+Hashing is basically a concept which helps to map larger values to the smaller values 
+ex: h(345456) =7;
+    h("Animal") =8;
+    h(name={"Anuj"}) =5; 
+    
+    examples of hash functions :
+    1) for the large keys:   h(key)=key%m where m is smaller number 
+    
+    2) for the string keys :  weighted sum will be calculated...
+    
+                    "cat" 
+                    s[0]*x^0 +s[1]*x^1 + s[2]*x^2  where x is any prime number and we are taking the 
+                       ascii of the each character 
+                       
+    3) for the objects :
+                weighted sum of elements 
+                   and as the object contains the primitive data in it so as we know the concept of the how
+                   to calculate the hash value for the int ,string elements 
+                   
+    **************Concept of hashtable******************
+        hashtable is nothing but the "array of nodes" 
+        
+        0 ----
+        1 ----
+        2 ----          //this is the array of the nodes
+        3 ----
+        4 ----
+        5 ----
+        6 ----
+       
+        
+        
+                    
+             hashtable====>>>
+                  Node[] hashtable=new Node[7];
+                       
+                Node 
+                {
+                    k key 
+                    v value 
+                    int hash 
+                    Node next 
+                }
+
+
+----------------------------------------------------------------------------------------------
+Inserting of the data :
+    h(key)= key % 7 
+    
+    keys[]={24,16,12,17,18,10,9} 
+
+
+
+        0 ---- 
+        1 ----
+        2 ---- 16---->9 (node structure complete )        
+        3 ---- 24------>17---->10 (actually here full Node is placed but here we just mentioned 24 for simplicity )
+        4 ----18
+        5 ----12
+        6 ----
+
+
+     ex:
+         key: 24 
+         value :
+         hash :24%7 =3 
+         next=null
+
+---------------------------------------------------------------------------------------------------
+     getting the elements.......
+            ex: get(12) 
+            
+               as we know the basic property of the hashing function as for the same input or key 
+               we get the same output............
+               
+               12%7=5 
+               
+               so at 5 we get the 12 as 12 is the node so it has value well 
+               refer the below structure of the Node 
+               
+               Node 
+               {
+               
+                   k key 
+                   v value 
+                   int hash 
+                   Node next 
+                   
+                   
+               }
+     as if you try get the value of the 10 key then it can done in following way :
+                firstly it calculates the hash 10 % 7 =3 so it goes Node array which has the "hash" as 3 
+                   and start checking that does the key matches to the first node -no
+                      then check for the second node 
+                      and then to the third node if matches then stop 
+                       -------and matches not found it will search till the next is null.....
+                       
+            as like here we are try to get the 10 here we make the equality check with the each one 
+        but the thing here is that if the size of the chain is long then it takes time more than O(1) 
+           so it takes the time O(1 + len)
+           
+           but the Java 8 provides us the fascility that if the length of the chain is crossed the 
+               certain length then java8 recommends to convert that chain into the "self balancing binary 
+               search tree ......." so then your time becomes the log(len) 
+                       
+                       
+     
+     
+     
+     
+     
+     
+     
+     
+     
+*/

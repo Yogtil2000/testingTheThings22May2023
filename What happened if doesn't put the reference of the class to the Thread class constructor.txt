@@ -1,0 +1,28 @@
+/******************************************************************************
+
+     Conceptual Code snippet from the "MULTITHREADING IN JAVA" :
+     
+*******************************************************************************/
+
+public class Main implements Runnable 
+{
+    public void run()
+    {
+        System.out.println("Entering in the world of the Thread concepts...");
+    }
+    
+	public static void main(String[] args)
+	{
+	     	Main m1=new Main();
+	     	Thread th=new Thread();
+	     	th.start();
+	}
+}
+//The code snippet doesn't give any output because : We didn't pass the class reference to which 
+ // we want to make the Thread so that's why start() method doesn't able to call the start() method of the 
+ // 1) Thread class 2) And through which we aren't able to call the run() method of the Runnable interface which is 
+ // overriden in the Thread class...
+ 
+ 
+ //OUTPUT :
+   ........................................................................nothing

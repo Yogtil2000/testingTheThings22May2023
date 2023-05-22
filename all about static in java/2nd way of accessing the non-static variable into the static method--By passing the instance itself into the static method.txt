@@ -1,0 +1,27 @@
+/******************************************************************************
+
+                            Online Java Compiler.
+                Code, Compile, Run and Debug java program online.
+Write your code in this editor and press "Run" button to execute it.
+
+*******************************************************************************/
+
+public class Main
+{
+      int nonStaticVariable;
+      public static void myStaticMethod(Main instance)
+      {
+          int value=instance.nonStaticVariable;
+          
+          System.out.println(value);
+      }
+	  static public void  main(String[] args)
+	  {
+	     Main m1=new Main();
+	    
+	     m1.nonStaticVariable=100;
+	     myStaticMethod(m1);
+	     
+	     
+	  }
+}

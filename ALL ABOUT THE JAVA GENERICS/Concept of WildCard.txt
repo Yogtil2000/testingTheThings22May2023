@@ -1,0 +1,56 @@
+/* 
+WILDCARDS IN JAVA GENERICS :
+       
+
+*/
+import java.util.*;
+abstract class Shape 
+{
+    abstract void draw();
+}
+class Rectangle extends Shape 
+{
+    void draw()
+    {
+        System.out.println("Drawing Rectangle...");
+    }
+}
+class Circle extends Shape 
+{
+    void draw()
+    {
+       System.out.println("Drawing Circle...");
+    }
+}
+class TestGeneric 
+{
+    //create the method which accepts only  child class of Shape 
+    
+     public static void drawShape(List<? extends Shape> lists)// <------ Here the concept of wildcard applicable 
+     {
+         for(Shape s:lists)
+         {
+             s.draw();
+         }
+     }
+}
+public class Main 
+{
+    public static void main(String args[])
+    {
+       List<Rectangle> list1=new ArrayList<>();
+       list1.add(new Rectangle());
+       list1.add(new Rectangle());
+       list1.add(new Rectangle());
+       
+       List<Circle> list2=new ArrayList<>();
+       list2.add(new Circle());
+       list2.add(new Circle());
+       list2.add(new Circle());
+       
+       TestGeneric.drawShape(list1);
+       TestGeneric.drawShape(list2);
+    }
+}
+
+OUTPUT:

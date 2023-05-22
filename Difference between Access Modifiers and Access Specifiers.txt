@@ -1,0 +1,7 @@
+Difference Between Access Specifiers and Access Modifiers
+The meaning of both the access specifiers and the access modifiers is the same. 
+There are no differences between the specifiers and modifiers, and the use of both is the same. 
+The access modifier is an official term and the new term that we use instead of modifier is specifier.
+
+So, default, public, protected, and private access modifiers can also be referred 
+           to as default, public, protected, and private access specifiers.

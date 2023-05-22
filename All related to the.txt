@@ -1,0 +1,20 @@
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args)
+	{
+		int arr[]={34,45,3,2,34,23,543};
+	    
+	     Arrays.sort(arr,Collections.reverseOrder());
+	     
+	    // Collections.sort(arr);----> No suitable method for the Collections.sort() i.e here sort(int[])  
+	     System.out.println(Arrays.toString(arr));
+		
+	}
+}
+// if here int arr[]={34,45,3,2,34,23,543}; this is present and if you tried for 
+// sort(arr,Collections.reverseOrder()) ---> Then it is not possible as Collections doesn't used on 
+//primitive they are only used on the (Objects) as here Integer is an Object and Integer class is 
+// allowable for used in sort() method and in the Collections.sort() as well.....
+
+

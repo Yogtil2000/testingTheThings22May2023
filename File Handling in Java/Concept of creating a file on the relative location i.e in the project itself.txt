@@ -1,0 +1,36 @@
+package CreateFilePackage;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
+public class CreateFile 
+{
+     public static void main(String args[])
+     {   //here file created on the Relative path i.e in the project itself
+    	 File file = new File("C:\\Users\\2153490\\eclipse-workspace\\FileHandlingInJava\\src\\file111.txt");
+                       ***Here above in the path the forward or backward shlases can't be matters there you can give either "//" or "\\" 
+    	 try {
+				if(file.createNewFile()) //this method helps to create the new File 
+				 {
+					 System.out.println("File Successfully created...");
+				 }
+				 else 
+				 {
+					 System.out.println("File already exists");
+				 }
+		    } catch (IOException e) 
+    	 {
+			
+			e.printStackTrace();
+		 }
+    	 
+//    	 Path currentRelativePath = Paths.get("");
+//    	 String s = currentRelativePath.toAbsolutePath().toString();
+//    	 System.out.println("Current relative path is: " + s);
+    	 
+     }
+}
+//Note that here the file is created in the "src" folder but can't showed directly there.
+     // but if you opened the Project Hierarchy in the Eclipse-Workspace there you will see it . as the file is created.

@@ -1,0 +1,37 @@
+public class Main
+{
+    public void eat()
+    {
+        System.out.println("I am eating...");
+    }
+	public static void main(String[] args) 
+	{
+	    
+	    //this happens why ? : 
+	    /*
+	       As I am trying to use the stuff first before it is accessed 
+	          this is happens because at the time of the instantiation and initialization 
+	               JVM has an idea like what exactly object contains 
+	                    so because on this fact we are able to use these things even if we seen those 
+	                         later or the after 
+	                             
+	                             
+	                             
+	    
+	    
+	    
+	    */
+	   
+	   Main obj=new Main();
+	   obj.run();
+	   obj.eat();
+	   
+	   System.out.println(obj.name);
+	}
+	
+	String name="Yogendra";
+	public void run()
+	{
+	    System.out.println("I am running...");
+	}
+}

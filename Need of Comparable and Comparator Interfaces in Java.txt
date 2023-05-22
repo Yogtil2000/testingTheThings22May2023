@@ -1,0 +1,206 @@
+What is the need of the comparable and comparator  interafaces in Java .As java already have the methods like Arrays.sort() to sort the primitive 
+objects ....
+    SO we can't sort our custom objects using these methods let's see......
+
+
+""MOST IMPORTANT THING THE CLASS Integer: 
+      suppose when you opened it there you see that Integer implements the "Comparable" so due to this reason only Collections.sort() 
+works directly here 
+  but when you make your own custom object then there is "no default implementation" for the Comparable interface  --->
+             DUE to this there is no direct working of the Collections.sort() method there on the custom object 
+
+So if you want the natural sorting you need to implement the "Comparable" in your custom object 
+
+
+
+So below is suppose our custom object:
+package package1NeedOfComparableAndComparator;
+
+public class Employee
+{
+      private int id;
+      private String name;
+      
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Employee(int id, String name) {
+		super();
+		this.id = id;
+		this.name = name;
+	}      
+}
+-----------------------------------------------------------------------------------------------------------------------------------------------
+Now below is the main class where we actually tried for sorting the custom objects using the Arrays.sort():
+
+package package1NeedOfComparableAndComparator;
+
+import java.util.Arrays;
+
+public class MainClass 
+{
+     public static void main(String args[])
+     {
+    	 
+    	 int intArr[]= {5,9,1,10};
+    	 Arrays.sort(intArr);  //---------->Here is the primitive kind of OBJECT 
+    	 System.out.println("Sorting the Primitive kind of Object using the Arrays.sort() method ->Sorted version"+Arrays.toString(intArr));
+    	 
+    	 
+    	Employee empArr[]= new Employee[4];
+    	empArr[0]=new Employee(5,"John");
+    	empArr[1]=new Employee(9, "Amit");
+    	empArr[2]=new Employee(1,"Paul");
+    	empArr[3]=new Employee(10, "Ame");
+    	
+    	Arrays.sort(empArr);  // --------------> Here is the custom kind of OBJECT there 
+    	System.out.println("Default sorting of the Employees list:\n"+Arrays.toString(empArr));
+    	 // so above sorting can't be possible if you tried it you got the following kind of the "RUNTIME EXCEPTION"=CLASS CAST EXCEPTIOn
+    	//it says here "Employee" cannot be casted to "java.lang.Comparable"
+    	
+    	//So We need comparable and comparator interface because Java cannot basically sorts "CUSTOM OBJECTS" as like sorts the "PRIMITIVE OBJECTS" 
+    	 
+    	// SO that is why we need comparable and comparator interface.
+     }
+}
+-----------------------------------------------------------------------------------------------------------------------------------------------
+So summary up to here is that java doesn't allow to sort the custom objects using these ways it demands only for the "Comparable" and "Comparator":
+
+// So now we want to move to the Concept of the "Comparator" and "Comparable" :
+    	
+    	//for this what you need to do is that the following steps:
+    	
+    	//1) Add the implements Comparable<Type> to the "custom object class":
+    	   2) implement the unimplemted method of the Comparable interface-----> "compareTo()" method 
+
+Now as after we did these 2 steps then we doesn't get the ClassCastException like "Employee" cannot be casted to "Comparable".
+
+so below are the changes done there :
+1) In the Employee class:
+package package1NeedOfComparableAndComparator;
+
+public class Employee implements Comparable<Employee>
+{
+      private int id;
+      private String name;
+      
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Employee(int id, String name) {
+		super();
+		this.id = id;
+		this.name = name;
+	}
+
+	@Override
+	public int compareTo(Employee o) {
+		return this.id-o.id;    ------------> SO here now the sorting is done on the basis of the employee id in the ascending order 
+	}
+      
+      
+      
+      
+}
++++++++++++++++++++++++++++++++++++++++
+2) In the main class we doesn't need to change anything there 
+
+ package package1NeedOfComparableAndComparator;
+
+import java.util.Arrays;
+
+public class MainClass 
+{
+     public static void main(String args[])
+     {
+    	 
+    	 int intArr[]= {5,9,1,10};
+    	 Arrays.sort(intArr);  //---------->Here is the primitive kind of OBJECT 
+    	 System.out.println("Sorting the Primitive kind of Object using the Arrays.sort() method ->Sorted version"+Arrays.toString(intArr));
+    	 
+    	 
+    	Employee empArr[]= new Employee[4];
+    	empArr[0]=new Employee(5,"John");
+    	empArr[1]=new Employee(9, "Amit");
+    	empArr[2]=new Employee(1,"Paul");
+    	empArr[3]=new Employee(10, "Ame");
+    	
+    	Arrays.sort(empArr);  // --------------> Here is the custom kind of OBJECT there 
+    	System.out.println("Default sorting of the Employees list:\n"+Arrays.toString(empArr));
+    	 // so above sorting can't be possible if you tried it you got the following kind of the "RUNTIME EXCEPTION"=CLASS CAST EXCEPTIOn
+    	//it says here "Employee" cannot be casted to "java.lang.Comparable"
+    	
+    	//So We need comparable and comparator interface because Java cannot basically sorts "CUSTOM OBJECTS" as like sorts the "PRIMITIVE OBJECTS" 
+    	 
+    	// SO that is why we need comparable and comparator interface.
+    	
+    	// So now we want to move to the Concept of the "Comparator" and "Comparable" :
+    	
+    	//for this what you need to do is that the following steps:
+    	
+    	//1) Add the implements Comparable<Type> to the "custom object class":
+    	
+     }
+}
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+if suppose we want to sort the id in the descending order then at that time we just need to change some "business logic change" in the compareTo() method :
+ 
+* Before--
+
+@Override 
+public int compareTo(Employee o)
+{
+   return this.id-o.id;
+}
+
+* After -- as you want to sort the employee on the basis of higher emp id first and lower later i.e basically in "descending order":
+@Override 
+public int compareTo(Employee o) 
+{
+     return o.id-this.id;
+}
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+/* 
+    	 So now my requirement is that I want to sort the string using the compareTo() method of the Comparable interface...
+    	 
+    	 so for that 1 trick:  Note: String class also had the compareTo() method overriden for them..
+    	 
+    	 so we can use it....
+    	 
+    	 @Override
+    	 public int compareTo(Employee o)  -----> This is the comparable which having its compareTo() method and here we are tried out 
+                                                  ----> to sort using the name i.e using the string  attribute there ....
+    	 {
+    	    return this.name.compareTo(o.name);
+    	 }
+    	 */
+-------------------------------------------------------------------Move towards the Comparator now ------------------------------------------------------

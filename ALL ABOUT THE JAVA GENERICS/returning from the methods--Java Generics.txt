@@ -1,0 +1,19 @@
+public class Main 
+{
+    public static <T> T print(T t)
+    {
+          return t; 
+    }
+    
+    public static void main(String args[])
+    {
+        String ans1=print("JAVA WORLD");
+        System.out.println(ans1);
+        
+    }
+}
+
+/* 
+
+
+*/

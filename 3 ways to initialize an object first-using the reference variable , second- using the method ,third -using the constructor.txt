@@ -1,0 +1,50 @@
+/*
+How to initialize an object 
+there are 3 ways to initialize an object 
+1) Using the reference variable 
+2) using the method 
+2) using the constructor 
+
+1) Using the reference variable 
+
+Animal obj=new Animal();
+obj.color="Orange";
+obj.name="Ranges";
+
+
+2) Using the method 
+  class Animal 
+  {
+      int age;
+      String color;
+      
+      public void method(int a,String c)
+      {
+          age=a;
+          color=c;
+          
+      }
+      
+      public static void main(String args[])
+      {
+          Animal obj=new Animal();
+          obj.method(23,white);
+          
+          
+      }
+      
+      
+  }
+
+*/
+public class Main
+{
+
+	public static void main(String[] args) 
+	{
+	   new Solution().method();
+	   
+	}
+	
+
+}

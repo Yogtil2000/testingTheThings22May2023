@@ -1,0 +1,41 @@
+/******************************************************************************
+
+                            Online Java Compiler.
+                Code, Compile, Run and Debug java program online.
+Write your code in this editor and press "Run" button to execute it.
+
+*******************************************************************************/
+import java.util.Scanner;
+class Student
+{
+    int id;
+    String name;
+    static String college;
+    
+    //crating  2 argument constructor 
+    Student(int i,String n)
+    {
+        this.id=i;
+        this.name=n;
+    }
+    
+    
+    
+    public void display()
+    {
+        System.out.println("ID :"+id+"  "+"NAME :"+name+"  "+"COLLEGE :"+college);
+    }
+}
+public class Main
+{
+	public static void main(String[] args)
+	{
+	    // note that you can make the constructor with the number of the arguments as you want.
+	    Student st1=new Student(1,"Navin");
+	    st1.college="GCOEARA1";
+	    st1.display();
+	    
+	    Student st2=new Student(2,"Ram");
+	    st2.display();
+	}
+}

@@ -1,0 +1,16 @@
+There are 3 types of the interfaces:
+1) Normal Interface
+2) Functional Interface or SAM "Single Abstract Method " interface 
+3) Marker interface 
+
+  Let's just consider about interface only have the abstract methods in it and nothing more than that 
+so 
+1) Noraml Interface is the interface which has more than 1 methods(abstract).
+2) Functional Interface is the interdface which has only the "single" abstract method in it.
+3) Marker Interface : is the interface which doesn't had any type of the interface 
+                      so this interface is mainly used for the giving the message to the JVM that this particular class
+                      which implements this interface have the special Previledges to it .
+   For example : Serializable is the interface which gives the info to the compiler that this particular class that implements 
+                  the Serializable interface has special previledges that this particular  class's object will be 
+                   convertible to the "stram of bytes".
+                 

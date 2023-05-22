@@ -1,0 +1,14 @@
+import java.io.Serializable;
+public class Main<T extends Number & Serializable>  // here actually Serializable is the interface 
+// still extends used here and about the systax and order here class are always written before the interafaces if any 
+
+{
+    Main(T t)
+    {
+        System.out.println(t);
+    }
+	public static void main(String[] args)
+	{
+	    Main<Integer> main=new Main(345);	
+	}
+}

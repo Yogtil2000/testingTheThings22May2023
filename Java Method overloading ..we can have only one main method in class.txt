@@ -1,0 +1,28 @@
+// There is only one main method in java as it is allowed to have the multiple main methods 
+// but it is correct that we can overload the main method 
+// and the main method with the right syntax or we say prototype can executes only and none the other 
+
+public class Main
+{
+    public void method()
+    {
+        System.out.println("Method 1 for the test...");
+    }
+	public static void main(String[] args) 
+	{
+	   Main m1=new Main();
+	   m1.method();
+	   
+	}
+	
+	public static void main()
+	{
+	    Main m2=new Main();
+	    m2.method();
+	}
+	
+	public static void main(String args)
+	{
+	    System.out.println("I am the overloaded version of the main method...");
+	}
+}
